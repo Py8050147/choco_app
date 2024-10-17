@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, serial, timestamp, text, varchar } from 'drizzle-orm/pg-core'
+import { pgTable, serial, timestamp, text, varchar, integer } from 'drizzle-orm/pg-core'
 
 export const users = pgTable('users', {
     id: serial('id').primaryKey(),
@@ -14,3 +14,12 @@ export const users = pgTable('users', {
     createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`)
 })
 
+export const products = pgTable('products', {
+    id: serial('id').primaryKey(),
+    name: varchar('name', { length: 100 }).notNull(),
+    image: text('text'),
+    description: text('description'),
+    price: integer('price').notNull(),
+    updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
+    createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`)
+})
