@@ -1,7 +1,7 @@
 import { db } from "@/lib/db/db";
 import { products } from "@/lib/db/schema";
 import { isServer, productSchema } from "@/lib/validators/productsSchema";
-import { writeFile } from "node:fs/promises";
+import { unlink, writeFile } from "node:fs/promises";
 import path from "path";
 
 export async function POST(request: Request) {
@@ -26,17 +26,21 @@ export async function POST(request: Request) {
         : (validateData.image as FileList)[0];
 
     const fileName = `${Date.now()}.${inputImage.name.split(".").slice(-1)}`
+    const imagePath = path.join(process.cwd(), 'public/assets', fileName)
+    console.log('imagePath', imagePath)
 
     try {
         const buffer = Buffer.from(await inputImage.arrayBuffer())
 
-        await writeFile(path.join(process.cwd(), 'public/assets', fileName), buffer)
+        await writeFile(imagePath, buffer)
     } catch (error) {
         return Response.json({ message: 'Failed to save the file to fs' }, { status: 500 });
     }
 
     try {
         await db.insert(products).values({ ...validateData, image: fileName })
+        await unlink(imagePath)
+        // await writeFile(path.format(process.cwd(), 'public/assets', fileName), buffer)
         // todo: remove stored image from fs
     } catch (error) {
         return Response.json({message: 'Failed to store product into the database'}, {status: 500})
