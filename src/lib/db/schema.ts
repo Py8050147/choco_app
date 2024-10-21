@@ -1,5 +1,6 @@
+
 import { sql } from "drizzle-orm";
-import { pgTable, serial, timestamp, text, varchar, integer } from 'drizzle-orm/pg-core'
+import { pgTable, serial, timestamp, text, varchar, integer, index } from 'drizzle-orm/pg-core'
 
 export const users = pgTable('users', {
     id: serial('id').primaryKey(),
@@ -22,4 +23,34 @@ export const products = pgTable('products', {
     price: integer('price').notNull(),
     updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
     createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`)
+})
+
+export const warehouses = pgTable('warehouses', {
+    id: serial('id').primaryKey(),
+    name: varchar('name', { length: 100 }).notNull(),
+    pincode: varchar('pincode', {length: 6}).notNull(),
+    updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
+    createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`)
+},
+    (table) => {
+        return {
+            pincodeIdx: index('pincode_idx').on(table.pincode)
+        }
+    }
+)
+
+export const orders = pgTable('orders', {
+    id: serial('id').primaryKey(),
+    userId: integer('user_id').notNull().references(() => 
+        users.id, {
+            onDelete: 'cascade'
+        }
+    ).notNull(),
+    status: varchar('status', { length: 10 }).notNull(),
+    type: varchar('type', { length: 6 }).default('quick'),
+    price: integer('price').notNull(),
+    address: text('address').notNull(),
+    productId: integer('product_id').references(() => products.id, { onDelete: 'no action' }).notNull(),
+    updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
+    createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
 })
