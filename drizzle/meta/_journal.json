@@ -15,6 +15,27 @@
       "when": 1729519174564,
       "tag": "0001_pale_ares",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1729537812512,
+      "tag": "0002_glossy_katie_power",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1729538480433,
+      "tag": "0003_marvelous_the_twelve",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1729539612167,
+      "tag": "0004_brief_sally_floyd",
+      "breakpoints": true
     }
   ]
 }
