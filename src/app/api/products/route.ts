@@ -1,6 +1,7 @@
 import { db } from "@/lib/db/db";
 import { products } from "@/lib/db/schema";
 import { isServer, productSchema } from "@/lib/validators/productsSchema";
+import { desc } from "drizzle-orm";
 import { unlink, writeFile } from "node:fs/promises";
 import path from "path";
 
@@ -17,9 +18,11 @@ export async function POST(request: Request) {
             price: Number(data.get('price')),
             image: data.get('image')
         })
+        console.log('validateData', validateData)
     } catch (err) {
         return Response.json({ message: err }, { status: 400 });
     }
+    console.log('validateData', validateData)
 
     const inputImage = isServer
         ? (validateData.image as File)
@@ -47,4 +50,15 @@ export async function POST(request: Request) {
     }
 
     return Response.json({message: "ok"}, {status: 200})
+}
+
+export async function GET() {
+    try {
+        const allProducts = await db.select().from(products).orderBy(desc(products.id))
+        console.log('allProducts', allProducts)
+        return Response.json(allProducts)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+        return Response.json({ message: 'Failed to fetch products' }, { status: 500 });
+    }
 }
