@@ -18,6 +18,7 @@ export async function POST(request: Request) {
         await db.insert(deliveryPersons).values(validateData)
 
         return Response.json({ message: 'OK' }, { status: 201 });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return Response.json(
             { message: 'Failed to store the delivery person into the database' },
