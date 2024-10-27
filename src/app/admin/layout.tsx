@@ -16,8 +16,9 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import Dropdown from './_components/dropdown'
+// import CardPage from './_components/card'
 
-const DashboardLayout = () => {
+const DashboardLayout = ({children}: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -45,15 +46,16 @@ const DashboardLayout = () => {
           <Dropdown />
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-                  <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                      {/* bg-muted/50 */}
-            <div className="aspect-video rounded-xl  bg-amber-300 border border-red-800"/>
-            <div className="aspect-video rounded-xl bg-amber-300 border border-red-800" />
-            <div className="aspect-video rounded-xl  bg-amber-300 border border-red-800" />
+          {/* <div className="flex flex-1 flex-col gap-4 p-4">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl bg-pink-400 md:min-h-min border border-red-800" />
-        </div>
+        </div>  */}
+       
+        {/* <div className="aspect-video rounded-xl  bg-amber-300 border border-red-800"> */}
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">{children}</main>
+        {/* </div> */}
       </SidebarInset>
     </SidebarProvider>
   )
