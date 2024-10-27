@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "../db/db";
 import { users } from "../db/schema";
@@ -10,6 +11,7 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
 
 
+      
       async profile(profile, token: any) {
         console.log("profile", profile);
         console.log("tokens", token);
