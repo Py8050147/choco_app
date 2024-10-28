@@ -6,7 +6,8 @@ import { productSchema } from '@/lib/validators/productsSchema'
 import {
     Form,
     FormControl,
-    // FormDescription,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    FormDescription,
     FormField,
     FormItem,
     FormLabel,

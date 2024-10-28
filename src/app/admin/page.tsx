@@ -1,4 +1,3 @@
-
 import React from 'react'
 // import CardPage from './_components/card'
 import { Activity, ArrowUpRight, CreditCard, DollarSign, Users } from 'lucide-react';

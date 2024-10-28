@@ -4,6 +4,8 @@ import CreateProductForm, { FormValues } from './create-product-form'
 
 import {useMutation, useQueryClient} from '@tanstack/react-query'
 import { createProduct } from '@/http/api'
+import { useNewProduct } from "@/store/product/product-store";
+import { useToast } from '@/hooks/use-toast'
 
 
 const Productsheet = () => {
@@ -48,11 +50,4 @@ const Productsheet = () => {
 }
 
 export default Productsheet
-function useNewProduct(): { isOpen: any; onClose: any } {
-  throw new Error('Function not implemented.')
-}
-
-function useToast(): { toast: any } {
-  throw new Error('Function not implemented.')
-}
 
