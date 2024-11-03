@@ -1,4 +1,4 @@
-// import { Product } from "@/types";
+import { Warehouse } from "@/types";
 
 import { api } from "./client";
 
@@ -16,3 +16,13 @@ export const createProduct = async (data: FormData) => {
 
     return response.data;
 };
+
+export const getAllPWarehouses = async () => {
+    const response = await api.get('/warehouses')
+    return await response.data
+}
+
+export const createWarehouse = async (data: Warehouse) => {
+    const response = await api.post('/warehouses', data)
+    return await response.data
+}
