@@ -33,13 +33,13 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <QueryProvider>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryProvider>
         {children}
-        </QueryProvider>
       </body>
+        </QueryProvider>
     </html>
   );
 }

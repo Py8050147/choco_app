@@ -11,3 +11,17 @@ export interface Warehouse {
     name: string;
     pincode: string;
 }
+
+export interface Inventory {
+    id: number;
+    sku: string;
+    warehouse: string;
+    product: string;
+}
+
+export interface InventoryData {
+    id: number;
+    sku: string;
+    warehouse: string;
+    product: string;
+}
