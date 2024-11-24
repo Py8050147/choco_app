@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "../db/db";
 import { users } from "../db/schema";
@@ -33,7 +34,7 @@ export const authOptions: AuthOptions = {
             .values(data)
             .onConflictDoUpdate({ target: users.email, set: data })
             .returning();
-            
+            console.log('user', user)
           return {
             ...data,
             name: data.fname,

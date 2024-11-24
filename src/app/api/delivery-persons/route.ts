@@ -38,6 +38,7 @@ export async function GET() {
 
         return Response.json(allDeliveryPersons);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return Response.json({ message: 'Failed to fetch delivery persons' }, { status: 500 });
     }
