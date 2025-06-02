@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import { pgTable, serial, timestamp, text, varchar, integer, index } from 'drizzle-orm/pg-core'
 

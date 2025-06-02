@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+
 import localFont from "next/font/local";
 import "./globals.css";
 // import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { QueryProvider } from "@/providers/query-provider";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth/authOptions";
+import AuthProvider from "@/providers/auth-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 
 
@@ -29,17 +34,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  // const queryClient = new QueryClient()
+  const session = getServerSession(authOptions)
 
   return (
     <html lang="en">
-      <QueryProvider>
+      <head>
+      <meta name="cryptomus" content="760c6933" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+         <QueryProvider>
+                    <AuthProvider session={session}>{children}</AuthProvider>
+                </QueryProvider>
+                <Toaster />
       </body>
-        </QueryProvider>
     </html>
   );
 }
