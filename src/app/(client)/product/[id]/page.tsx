@@ -3,7 +3,7 @@ import { getSingleProduct, placeOrder } from '@/http/api';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useParams, usePathname } from 'next/navigation';
 import React from 'react';
-import Image from 'next/image';
+import { Image } from '@imagekit/next';
 import Header from '../../_components/header';
 import { Loader2, Star } from 'lucide-react';
 import { Product } from '@/types';
@@ -103,7 +103,7 @@ const SingleProduct = () => {
                             <Skeleton className="aspect-square w-[28rem] bg-brown-100" />
                         ) : (
                             <Image
-                                src={`/assets/${product?.image || 'default.jpg'}`}
+                                src={product?.image}
                                 alt={product?.name ?? 'image'}
                                 width={0}
                                 height={0}

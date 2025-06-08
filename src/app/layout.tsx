@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/authOptions";
 import AuthProvider from "@/providers/auth-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { ImageKitProvider } from "@imagekit/next"
 
 
 
@@ -39,15 +40,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <meta name="cryptomus" content="760c6933" />
+        <meta name="cryptomus" content="760c6933" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-         <QueryProvider>
-                    <AuthProvider session={session}>{children}</AuthProvider>
-                </QueryProvider>
-                <Toaster />
+        {/*  */}
+         <ImageKitProvider
+          urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+          >
+        <QueryProvider>
+            <AuthProvider session={session}>{children}</AuthProvider>
+        </QueryProvider>
+          </ImageKitProvider>
+        <Toaster />
       </body>
     </html>
   );

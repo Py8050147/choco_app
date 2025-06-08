@@ -1,4 +1,12 @@
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
+// import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
+import {
+    Dialog,
+    DialogTrigger,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+  } from "@/components/ui/dialog";
 import React from 'react'
 import CreateProductForm, { FormValues } from './create-product-form'
 
@@ -36,16 +44,34 @@ const Productsheet = () => {
 
         mutate(formdata);
     };
-  return (
-    <Sheet open={isOpen} onOpenChange={onClose}>
-            <SheetContent className="min-w-[28rem] space-y-4">
-                <SheetHeader>
-                    <SheetTitle>Create Product</SheetTitle>
-                    <SheetDescription>Create a new product</SheetDescription>
-                </SheetHeader>
-                <CreateProductForm onSubmit={onSubmit} disabled={isPending} />
-            </SheetContent>
-        </Sheet>
+    return (
+       
+          
+          <Dialog open={isOpen} onOpenChange={onClose}>
+            <DialogTrigger asChild>
+              {/* Optional: Add a trigger button if needed */}
+              <button className="hidden">Open</button>
+            </DialogTrigger>
+            <DialogContent className="min-w-[28rem] space-y-4">
+              <DialogHeader>
+                <DialogTitle>Create Product</DialogTitle>
+                <DialogDescription>Create a new product</DialogDescription>
+              </DialogHeader>
+          
+              <CreateProductForm onSubmit={onSubmit} disabled={isPending} />
+            </DialogContent>
+          </Dialog>
+          
+
+    // <Sheet open={isOpen} onOpenChange={onClose}>
+    //         <SheetContent className="min-w-[28rem] space-y-4">
+    //             <SheetHeader>
+    //                 <SheetTitle>Create Product</SheetTitle>
+    //                 <SheetDescription>Create a new product</SheetDescription>
+    //             </SheetHeader>
+    //             <CreateProductForm onSubmit={onSubmit} disabled={isPending} />
+    //         </SheetContent>
+    //     </Sheet>
   )
 }
 

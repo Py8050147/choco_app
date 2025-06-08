@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+import {Image} from "@imagekit/next"
 import { Separator } from '@/components/ui/separator';
 import React from 'react';
 import Link from 'next/link';
@@ -46,7 +46,7 @@ const Products = () => {
                                         key={product.id}
                                         className="flex flex-col items-start justify-center gap-5">
                                         <Image
-                                            src={`/assets/${product.image}`}
+                                            src={product.image}
                                             alt={product.name}
                                             width={0}
                                             height={0}
@@ -63,10 +63,10 @@ const Products = () => {
                                                 <span className="font-bold">${product.price}</span>
                                             </div>
 
-                                            <Link href={`/product/${product.id}`}>
+                                            <Link href={`/product/${product.id}`} className=" border border-red-500">
                                                 <Button
                                                     size={'sm'}
-                                                    className="mt-5 w-full bg-brown-900 hover:bg-brown-800 active:bg-brown-700">
+                                                    className="mt-5 w-full">
                                                     Buy Now
                                                 </Button>
                                             </Link>
