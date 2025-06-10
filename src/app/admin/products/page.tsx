@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Product } from '@/types';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-import ProductSheet from './_components/product-sheet';
+import ProductSheet from './_components/product-dialog';
 import { Loader2 } from 'lucide-react';
 import { columns } from './_components/columns';
 import { DataTable } from '../_components/data-table';

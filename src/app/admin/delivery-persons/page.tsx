@@ -10,7 +10,7 @@ import { Product } from '@/types';
 import { Loader2 } from 'lucide-react';
 import { useNewDeliveryPerson } from '@/store/deliveryPerson/delivery-person-store';
 import { DataTable } from '../_components/data-table';
-import DeliveryPersonSheet from './_components/delivery-person-sheet';
+import DeliveryPersonSheet from './_components/delivery-person-dialog';
 
 const DeliveryPersonsPage = () => {
     const { onOpen } = useNewDeliveryPerson();

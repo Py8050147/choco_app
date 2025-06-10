@@ -1,7 +1,6 @@
 // import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import {
     Dialog,
-    DialogTrigger,
     DialogContent,
     DialogHeader,
     DialogTitle,
@@ -48,10 +47,6 @@ const Productsheet = () => {
        
           
           <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogTrigger asChild>
-              {/* Optional: Add a trigger button if needed */}
-              <button className="hidden">Open</button>
-            </DialogTrigger>
             <DialogContent className="min-w-[28rem] space-y-4">
               <DialogHeader>
                 <DialogTitle>Create Product</DialogTitle>

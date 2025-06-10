@@ -4,7 +4,7 @@ import { columns } from "./_components/columns";
 import { useQuery } from "@tanstack/react-query";
 import { Inventory } from "@/types";
 import { getAllInventories } from "@/http/api";
-import InventorySheet from "./_components/inventory-sheet";
+import InventorySheet from "./_components/inventory-dialog";
 import { DataTable } from "../_components/data-table";
 import { Button } from "@/components/ui/button";
 import { useNewInventory } from "@/store/inventory/inventory-store";

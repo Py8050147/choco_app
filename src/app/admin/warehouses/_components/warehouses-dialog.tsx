@@ -1,4 +1,10 @@
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+  } from "@/components/ui/dialog";
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createWarehouse } from '@/http/api'
@@ -30,15 +36,16 @@ const WarehouseSheet = () => {
     };
 
     return (
-        <Sheet open={isOpen} onOpenChange={onClose}>
-           <SheetContent className="min-w-[28rem] space-y-4">
-                <SheetHeader>
-                    <SheetTitle>Create Warehouse</SheetTitle>
-                    <SheetDescription>Create a new warehouse</SheetDescription>
-                </SheetHeader>
+        
+        <Dialog open={isOpen} onOpenChange={onClose}>
+           <DialogContent className="min-w-[28rem] space-y-4">
+                <DialogHeader>
+                    <DialogTitle>Create Warehouse</DialogTitle>
+                    <DialogDescription>Create a new warehouse</DialogDescription>
+                </DialogHeader>
                 <CreateWarehouseForm onSubmit={onSubmit} disabled={isPending} />
-            </SheetContent>
-        </Sheet>
+            </DialogContent>
+        </Dialog>
         
     )
 

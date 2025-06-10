@@ -55,8 +55,6 @@ const CreateProductForm = ({
                                     {...field}
                                     className="w-full px-4 py-2 border border-slate-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
                                 />
-
-
                             </FormControl>
                             <FormMessage />
                         </FormItem>
