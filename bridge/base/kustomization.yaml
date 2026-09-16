@@ -1,0 +1,10 @@
+#! kustomization.yaml
+# Generated code, do not edit
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+    - 0-choco-namespace.yaml
+    - choco-app-deployment.yaml
+    - choco-app-expose.yaml
+    - choco-app-service.yaml
+    - default-network-policy.yaml
