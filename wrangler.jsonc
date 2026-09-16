@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "choco-app",
+  "name": "chocoapp",
   "compatibility_date": "2026-09-14",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
@@ -12,8 +12,8 @@
     {
       // Self-reference service binding, the service name must match the worker name
       // see https://opennext.js.org/cloudflare/caching
-      "binding": "chocoapp",
-      "service": "choco-app",
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "chocoapp",
     },
   ],
   "images": {
